@@ -1,6 +1,7 @@
 package se.chasacademy.databaser.jpaorders.Models;
 
 import jakarta.persistence.*;
+import org.hibernate.type.YesNoConverter;
 
 @Entity
 @Table(name = "T_PRODUCT")
@@ -19,23 +20,11 @@ public class Product {
     @Column(name = "UNIT_PRICE_CENTS", nullable = false)
     private int unitPriceCents;
 
-    @Column(name = "ACTIVE_FLAG", nullable = false)
-    private char active;
+    @Column(name = "ACTIVE_FLAG", nullable = false, length = 1)
+    @Convert(converter = YesNoConverter.class)
+    private boolean active;
 
     public Product() {}
-
-    public Product(String name, String description, int unitPriceCents) {
-        this.name = name;
-        this.description = description;
-        this.unitPriceCents = unitPriceCents;
-    }
-
-    public Product(String name, String description, int unitPriceCents, char active) {
-        this.name = name;
-        this.description = description;
-        this.unitPriceCents = unitPriceCents;
-        this.active = active;
-    }
 
     public Long getId() {
         return id;
@@ -69,11 +58,11 @@ public class Product {
         this.unitPriceCents = unitPriceCents;
     }
 
-    public char getActive() {
+    public boolean getActive() {
         return active;
     }
 
-    public void setActive(char active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 }

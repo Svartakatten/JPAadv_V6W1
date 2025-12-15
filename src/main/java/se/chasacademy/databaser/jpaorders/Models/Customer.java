@@ -3,6 +3,8 @@ package se.chasacademy.databaser.jpaorders.Models;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "T_CUSTOMER")
@@ -21,23 +23,13 @@ public class Customer {
     @Column(name = "EMAIL_ADDR", length = 200, unique = true, nullable = false)
     private String email;
 
-    @Column(name = "CREATED_AT", nullable = false /* default handled by database*/)
+    @Column(name = "CREATED_AT", nullable = false)
     private LocalDateTime createdAt;
 
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orders = new ArrayList<>();
+
     public Customer() {}
-
-    public Customer(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
-
-    public Customer(String firstName, String lastName, String email, LocalDateTime createdAt) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.createdAt = createdAt;
-    }
 
     public Long getId() {
         return id;
