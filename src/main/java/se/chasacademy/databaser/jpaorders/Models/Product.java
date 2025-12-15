@@ -3,6 +3,7 @@ package se.chasacademy.databaser.jpaorders.Models;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "T_PRODUCT")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
