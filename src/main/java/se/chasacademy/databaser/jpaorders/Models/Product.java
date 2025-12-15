@@ -1,7 +1,7 @@
 package se.chasacademy.databaser.jpaorders.Models;
 
 import jakarta.persistence.*;
-import org.hibernate.type.YesNoConverter;
+import se.chasacademy.databaser.jpaorders.util.BooleanConverter;
 
 @Entity
 @Table(name = "T_PRODUCT")
@@ -21,7 +21,7 @@ public class Product {
     private int unitPriceCents;
 
     @Column(name = "ACTIVE_FLAG", nullable = false, length = 1)
-    @Convert(converter = YesNoConverter.class)
+    @Convert(converter = BooleanConverter.class)
     private boolean active;
 
     public Product() {}
