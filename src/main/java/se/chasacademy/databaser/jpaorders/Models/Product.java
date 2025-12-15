@@ -20,7 +20,11 @@ public class Product {
     @Column(name = "UNIT_PRICE_CENTS", nullable = false)
     private int unitPriceCents;
 
-    @Column(name = "ACTIVE_FLAG", nullable = false, length = 1)
+    @Column(
+            name = "ACTIVE_FLAG",
+            nullable = false,
+            length = 1
+    )
     @Convert(converter = BooleanConverter.class)
     private boolean active;
 
