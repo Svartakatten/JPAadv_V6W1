@@ -11,16 +11,16 @@ public class Customer {
     @Column(name = "CUST_ID")
     private Long id;
 
-    @Column(name = "CUST_FIRST_NAME")
+    @Column(name = "CUST_FIRST_NAME", length = 100, nullable = false)
     private String firstName;
 
-    @Column(name = "CUST_LAST_NAME")
+    @Column(name = "CUST_LAST_NAME", length = 100, nullable = false)
     private String lastName;
 
-    @Column(name = "EMAIL_ADDR")
+    @Column(name = "EMAIL_ADDR", length = 200, unique = true, nullable = false)
     private String email;
 
-    @Column(name = "CREATED_AT")
+    @Column(name = "CREATED_AT", nullable = false /* default handled by database*/)
     private LocalDateTime createdAt;
 
     public Customer() {}
