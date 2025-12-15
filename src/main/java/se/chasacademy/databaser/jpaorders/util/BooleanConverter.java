@@ -4,20 +4,20 @@ import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
 @Converter
-public class BooleanConverter implements AttributeConverter<Boolean, String> {
+public class BooleanConverter implements AttributeConverter<Boolean, Character> {
 
     @Override
-    public String convertToDatabaseColumn(Boolean attribute) {
+    public Character convertToDatabaseColumn(Boolean attribute) {
         if ( attribute == null) {
             return null;
         }
-        return attribute ? "Y" : "N";
+        return attribute ? 'Y' : 'N';
     }
     @Override
-    public Boolean convertToEntityAttribute(String dbData) {
+    public Boolean convertToEntityAttribute(Character dbData) {
         if ( dbData == null) {
-            return null;
+            return false;
         }
-        return "Y".equalsIgnoreCase(dbData);
+        return dbData.equals('Y') || dbData.equals('y');
     }
 }
